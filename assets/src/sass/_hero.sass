@@ -1,0 +1,144 @@
+.hero
+  padding-bottom: 26px
+  // &__wrap
+  //   gap: 100px
+  &__title
+    font-weight: 700
+    font-size: 56px
+    line-height: 70px
+    color: $text-color
+  .green
+    border-radius: 10px
+    color: #212122
+    background: $green
+    padding: 15px
+    max-width: fit-content
+  .click
+    position: relative
+    &:after
+      content: ""
+      position: absolute
+      bottom: -14px
+      left: 0
+      right: 0
+      width: 100%
+      height: 12px
+      background: url('../../../inc/img/line.svg') no-repeat center center
+      background-size: cover
+  .image-text-block
+    margin-bottom: 40px
+    margin-top: 35px
+    &__item
+      gap: 12px
+      margin-bottom: 14px
+    &__img
+      width: 53px
+      height: 53px
+    &__text
+      font-weight: 400
+      font-size: 20px
+      line-height: 24px
+  .free
+    font-weight: 400
+    font-size: 14px
+    line-height: 17px
+    display: block
+    margin-top: 22px
+  .hero__first-block
+    background: url('../../../inc/img/item-fon.png')
+    background-repeat: no-repeat
+    background-size: cover
+    background-position: center
+    padding: 0px 105px 40px 0
+  .hero__second-block, .hero__first-block
+    width: 50%
+  .block
+    background: #363637
+    border-radius: 15px
+  .questions
+    padding: 39px 25px 37px
+    margin-bottom: 28px
+    &__item
+      gap: 5px
+      flex-wrap: nowrap
+    &__title
+      font-weight: 700
+      font-size: 30px
+      line-height: 36px
+    &__heading
+      border-bottom: 2px dotted #ffffff
+      font-weight: 400
+      font-size: 14px
+      line-height: 17px
+      padding: 10px 0
+      width: 100%
+    &__icon
+      width: 27px
+      height: 17px
+    &__text
+      font-weight: 400
+      font-size: 14px
+      line-height: 17px
+      color: #5F5F5F
+      float: inline-end
+      margin-top: 10px
+      display: block
+  .form
+    background: #363637 url('../../../inc/img/form-fon.png') no-repeat top right
+    // background-size: cover
+    border-radius: 30px
+    &__contact
+      padding: 29px 30px 20px 38px
+    &__label
+      font-weight: 700
+      font-size: 18px
+      line-height: 22px
+      margin-bottom: 6px
+      display: block
+      margin-left: 8px
+    &__name-label
+      font-weight: 400
+      font-size: 14px
+      line-height: 17px
+      margin-bottom: 6px
+      display: block
+      margin-left: 8px
+    &__message
+      background: #FFFFFF
+      border: 1px solid #ECECEC
+      box-shadow: inset 5px 4px 4px rgba(0, 0, 0, 0.05)
+      border-radius: 10px
+      width: 100%
+      height: 179px
+      padding: 18px 13px
+      font-weight: 400
+      font-size: 14px
+      line-height: 17px
+      color: #BEBEBE
+      margin-bottom: 18px
+    &__name
+      background: #FFFFFF
+      border: 1px solid #E9E9E9
+      box-shadow: inset 5px 4px 4px rgba(0, 0, 0, 0.05)
+      border-radius: 10px
+      width: 323px
+      height: 46px
+      padding: 12px 16px
+      font-weight: 400
+      font-size: 14px
+      line-height: 17px
+      color: #BEBEBE
+    &__btn
+      background: linear-gradient(90deg, #BADF20 0%, #B4D430 40.4%, #ACC449 100%)
+      border-radius: 10px
+      padding: 12px 50px
+      border: none
+    .input-wrap
+      margin-bottom: 20px
+    .privacy
+      padding: 18px 42px
+      background: #1C1D1B
+      border-bottom-left-radius: 30px
+      border-bottom-right-radius: 30px
+.hero__second-block
+  margin-bottom: 14px

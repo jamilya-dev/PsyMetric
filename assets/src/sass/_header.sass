@@ -1,0 +1,53 @@
+.header
+  padding: 57px 0 47px
+  &__menu
+    margin-block-start: 0
+    margin-block-end: 0
+    padding-inline-start: 0
+    gap: 20px
+    background: #363637
+    border-radius: 30px
+    height: 52px
+    padding: 8px 21px 6px 27px
+    .menu-item
+      position: relative
+      display: flex
+      align-items: center
+      & a
+        color: #FFFFFF
+      & a:hover
+        color: $green
+      &:hover > .sub-menu
+        display: block
+    &--mobile
+      display: none
+.mobil_menu
+  display: none
+.logo
+  .site-name
+    font-weight: 700
+    font-size: 48px
+    line-height: 58px
+    color: #F9FDFF
+    margin-left: 9px
+    .highlight
+      color: $green
+.login
+  display: flex
+  align-items: center
+  &__btn
+    border: 1px solid #FFFFFF
+    border-radius: 30px
+    color: $text-color
+    gap: 22px
+    padding: 7px 22px 7px 46px
+    cursor: pointer
+    position: relative
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    z-index: 10
+    white-space: nowrap
+    object
+      z-index: -1
+      position: relative

@@ -52,7 +52,7 @@
           <?php endwhile;
             wp_reset_postdata();
           endif; ?>
-          <span class="questions__text">Весь топ вопросов</span>
+          <a href="#" class="questions__text">Весь топ вопросов</a>
         </div>
         <div class="form">
           <form action="" id="form__contact" class="form__contact">
@@ -75,7 +75,4 @@
   </div>
 </section>
 
-
-<?php the_content(); ?>
-<?php
-get_footer();
+<?php get_footer();

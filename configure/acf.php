@@ -179,71 +179,62 @@ add_action('save_post', function ($post_id) {
 /**
  * Telegram
  */
-// Хук для инициализации страницы настроек
+
 add_action('admin_menu', 'telegram_settings_page');
 add_action('admin_init', 'telegram_settings_init');
 
-// Создание страницы настроек
 function telegram_settings_page()
 {
 	add_options_page(
-		'Telegram Settings',               // Название страницы
-		'Telegram Settings',               // Пункт меню
-		'manage_options',                  // Уровень доступа
-		'telegram-settings',               // Слаг страницы
-		'telegram_settings_page_html'      // Функция вывода HTML
+		'Telegram Settings',
+		'Telegram Settings',
+		'manage_options',
+		'telegram-settings',
+		'telegram_settings_page_html'
 	);
 }
 
-// Регистрация настроек
 function telegram_settings_init()
 {
-	// Регистрируем настройки
 	register_setting('telegram_settings_group', 'telegram_id');
 	register_setting('telegram_settings_group', 'telegram_bot_api_token');
 
-	// Добавляем секцию
 	add_settings_section(
-		'telegram_settings_section',       // ID секции
-		'Telegram Integration Settings',   // Заголовок секции
-		null,                              // Описание (опционально)
-		'telegram-settings'                // Слаг страницы
+		'telegram_settings_section',
+		'Telegram Integration Settings',
+		null,
+		'telegram-settings'
 	);
 
-	// Поле для Telegram ID
 	add_settings_field(
-		'telegram_id',                     // ID поля
-		'Telegram ID',                     // Название поля
-		'telegram_id_field_html',          // Функция вывода HTML
-		'telegram-settings',               // Слаг страницы
-		'telegram_settings_section'        // ID секции
+		'telegram_id',
+		'Telegram ID',
+		'telegram_id_field_html',
+		'telegram-settings',
+		'telegram_settings_section'
 	);
 
-	// Поле для Telegram Bot API Token
 	add_settings_field(
-		'telegram_bot_api_token',          // ID поля
-		'Telegram Bot API Token',          // Название поля
-		'telegram_bot_api_token_field_html', // Функция вывода HTML
-		'telegram-settings',               // Слаг страницы
-		'telegram_settings_section'        // ID секции
+		'telegram_bot_api_token',
+		'Telegram Bot API Token',
+		'telegram_bot_api_token_field_html',
+		'telegram-settings',
+		'telegram_settings_section'
 	);
 }
 
-// Вывод поля для Telegram ID
 function telegram_id_field_html()
 {
-	$telegram_id = get_option('telegram_id', ''); // Получаем сохранённое значение
+	$telegram_id = get_option('telegram_id', '');
 	echo '<input type="text" name="telegram_id" value="' . esc_attr($telegram_id) . '" style="width: 400px;">';
 }
 
-// Вывод поля для Telegram Bot API Token
 function telegram_bot_api_token_field_html()
 {
-	$telegram_bot_api_token = get_option('telegram_bot_api_token', ''); // Получаем сохранённое значение
+	$telegram_bot_api_token = get_option('telegram_bot_api_token', '');
 	echo '<input type="text" name="telegram_bot_api_token" value="' . esc_attr($telegram_bot_api_token) . '" style="width: 400px;">';
 }
 
-// HTML для страницы настроек
 function telegram_settings_page_html()
 {
 	if (!current_user_can('manage_options')) {
@@ -254,7 +245,6 @@ function telegram_settings_page_html()
 		<h1>Telegram Integration Settings</h1>
 		<form action="options.php" method="post">
 			<?php
-			// Вывод полей настроек
 			settings_fields('telegram_settings_group');
 			do_settings_sections('telegram-settings');
 			submit_button('Save Settings');

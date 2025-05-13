@@ -1,4 +1,5 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/test/wp-load.php';
 require 'PHPMailer/Exception.php';
 require 'PHPMailer/PHPMailer.php';
 require 'PHPMailer/SMTP.php';
@@ -23,18 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Перевод названий полей на русский язык
     $translatedFields = [
-        'rooms' => 'Комнаты',
-        'bathroom' => 'Ванные комнаты',
-        'phone' => 'Телефон',
-        'servtype' => 'Тип уборки',
-        'totalsumm' => 'Сумма',
         'name' => 'Имя',
-        'idform' => 'Комнат',
-        'comment' => 'Комметарий',
-        'rooms' => 'Комнат',
-        'bathroom' => 'Санузлов',
-        'square' => 'Плошадь',
-        // Добавьте другие поля и их переводы
+        'message' => 'Сообщение',
     ];
 
 

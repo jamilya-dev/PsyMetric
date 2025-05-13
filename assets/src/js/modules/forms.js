@@ -2,6 +2,7 @@ const forms = ({ formId, someElem = [] }) => {
   if (document.getElementById(formId)) {
     const form = document.getElementById(formId);
     const statusBlock = document.createElement('div');
+    statusBlock.classList.add('info');
     const loadText = 'Загрузка...';
     const errorText = 'Ошибка...';
     const successText = 'Спасибо! Наш менеджер с вами свяжется';

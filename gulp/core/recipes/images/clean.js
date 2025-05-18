@@ -1,8 +1,7 @@
-var del = require('del');
+var del = require("del");
 
 // config
-var config = require('../../config/images');
-
+var config = require("../../config/images");
 
 /**
  * Delete all images
@@ -11,6 +10,7 @@ var config = require('../../config/images');
  *
  */
 module.exports = function (done) {
-	del(config.paths.clean, { force: true })
-		.then(function () { done(); });
+  del(config.paths.clean, { force: true }).then(function () {
+    done();
+  });
 };

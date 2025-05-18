@@ -1,8 +1,7 @@
-var gulp   = require('gulp');
+var gulp = require("gulp");
 
 // config
-var config = require('../../config/images');
-
+var config = require("../../config/images");
 
 /**
  * Watch image files
@@ -11,8 +10,7 @@ var config = require('../../config/images');
  * @param done
  */
 module.exports = function (done) {
+  gulp.watch(config.paths.watch, gulp.parallel("images:dev"));
 
-	gulp.watch(config.paths.watch, gulp.parallel('images:dev'));
-
-	done();
+  done();
 };

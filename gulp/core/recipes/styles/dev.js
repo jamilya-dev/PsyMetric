@@ -1,18 +1,18 @@
-var gulp = require('gulp');
-var filter = require('gulp-filter');
-var plumber = require('gulp-plumber');
-var sourcemaps = require('gulp-sourcemaps');
-var sass = require('gulp-sass')(require('sass'));
-var notify = require('gulp-notify');
-var browserSync = require('browser-sync');
-var autoprefixer = require('autoprefixer');
-var postcss = require('gulp-postcss');
+var gulp = require("gulp");
+var filter = require("gulp-filter");
+var plumber = require("gulp-plumber");
+var sourcemaps = require("gulp-sourcemaps");
+var sass = require("gulp-sass")(require("sass"));
+var notify = require("gulp-notify");
+var browserSync = require("browser-sync");
+var autoprefixer = require("autoprefixer");
+var postcss = require("gulp-postcss");
 
 // config
-var config = require('../../config/styles');
+var config = require("../../config/styles");
 
 // utils
-var pumped = require('../../utils/pumped');
+var pumped = require("../../utils/pumped");
 
 // postcss
 var plugins = [autoprefixer(config.options.autoprefixer)];
@@ -26,7 +26,7 @@ var plugins = [autoprefixer(config.options.autoprefixer)];
  *
  */
 module.exports = function (cb) {
-  var filterCSS = filter('**/*.css', { restore: true });
+  var filterCSS = filter("**/*.css", { restore: true });
 
   return (
     gulp
@@ -35,12 +35,12 @@ module.exports = function (cb) {
 
       .pipe(sourcemaps.init())
       .pipe(sass.sync(config.options.sass))
-      .on('error', function (error) {
+      .on("error", function (error) {
         notify().write(error);
-        this.emit('end');
+        this.emit("end");
       })
       .pipe(postcss(plugins))
-      .pipe(sourcemaps.write('./'))
+      .pipe(sourcemaps.write("./"))
 
       .pipe(gulp.dest(config.paths.dest))
 
@@ -53,9 +53,9 @@ module.exports = function (cb) {
 
       .pipe(
         notify({
-          message: pumped('Your SCSS is Compiled.'),
+          message: pumped("Your SCSS is Compiled."),
           onLast: true,
-        })
+        }),
       )
   );
 };
@@ -67,13 +67,13 @@ module.exports.css = function () {
   return gulp
     .src(config.paths.src) // Добавьте путь к вашим CSS файлам
     .pipe(plumber())
-    .pipe(concat('vendor.css')) // Объединение всех CSS файлов в один
+    .pipe(concat("vendor.css")) // Объединение всех CSS файлов в один
     .pipe(cleanCSS()) // Минификация
     .pipe(gulp.dest(config.paths.dest)) // Сохраняем в папку назначения
     .pipe(
       notify({
-        message: pumped('CSS Compiled & Minified.'),
+        message: pumped("CSS Compiled & Minified."),
         onLast: true,
-      })
+      }),
     );
 };

@@ -1,11 +1,11 @@
 const forms = ({ formId, someElem = [] }) => {
   if (document.getElementById(formId)) {
     const form = document.getElementById(formId);
-    const statusBlock = document.createElement('div');
-    statusBlock.classList.add('info');
-    const loadText = 'Загрузка...';
-    const errorText = 'Ошибка...';
-    const successText = 'Спасибо! Наш менеджер с вами свяжется';
+    const statusBlock = document.createElement("div");
+    statusBlock.classList.add("info");
+    const loadText = "Загрузка...";
+    const errorText = "Ошибка...";
+    const successText = "Спасибо! Наш менеджер с вами свяжется";
 
     const sendData = (data) => {
       const formBody = new URLSearchParams();
@@ -15,10 +15,10 @@ const forms = ({ formId, someElem = [] }) => {
         }
       }
       return fetch(`${themePaths.themeUrl}/send.php`, {
-        method: 'POST',
+        method: "POST",
         body: formBody,
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          "Content-Type": "application/x-www-form-urlencoded",
         },
       }).then((res) => res.text());
     };
@@ -34,9 +34,9 @@ const forms = ({ formId, someElem = [] }) => {
       });
       someElem.forEach((elem) => {
         const element = document.getElementById(elem.id);
-        if (elem.type === 'block') {
+        if (elem.type === "block") {
           formBody[elem.id] = element.textContent;
-        } else if (elem.type === 'input') {
+        } else if (elem.type === "input") {
           formBody[elem.id] = element.value;
         }
       });
@@ -46,7 +46,7 @@ const forms = ({ formId, someElem = [] }) => {
           statusBlock.textContent = successText;
           form.reset();
           setTimeout(() => {
-            statusBlock.textContent = '';
+            statusBlock.textContent = "";
           }, 2000);
         })
         .catch((error) => {
@@ -56,9 +56,9 @@ const forms = ({ formId, someElem = [] }) => {
 
     try {
       if (!form) {
-        throw new Error('Верните форму на место, пожалуйста!!!');
+        throw new Error("Верните форму на место, пожалуйста!!!");
       }
-      form.addEventListener('submit', (e) => {
+      form.addEventListener("submit", (e) => {
         e.preventDefault();
 
         submitForm();

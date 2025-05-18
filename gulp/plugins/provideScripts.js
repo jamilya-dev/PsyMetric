@@ -1,8 +1,7 @@
-var webpack   = require('webpack');
+var webpack = require("webpack");
 
 // utils
-var deepMerge = require('../core/utils/deepMerge');
-
+var deepMerge = require("../core/utils/deepMerge");
 
 /**
  * Return a new object extended
@@ -16,11 +15,10 @@ var deepMerge = require('../core/utils/deepMerge');
  * @returns {*}
  */
 function addKey(obj, key, value) {
-	var temp = {};
-	temp[key] = value;
-	return Object.assign({}, obj, temp);
+  var temp = {};
+  temp[key] = value;
+  return Object.assign({}, obj, temp);
 }
-
 
 /**
  * Return an object mapping a local
@@ -31,11 +29,8 @@ function addKey(obj, key, value) {
  * @returns {*}
  */
 function setProvider(scripts, script) {
-	return script.local
-		? addKey(scripts, script.local, script.package)
-		: scripts;
+  return script.local ? addKey(scripts, script.local, script.package) : scripts;
 }
-
 
 /**
  * Return an object mapping a package
@@ -46,11 +41,10 @@ function setProvider(scripts, script) {
  * @returns {*}
  */
 function setExternal(scripts, script) {
-	return script.global
-		? addKey(scripts, script.package, script.global)
-		: scripts;
+  return script.global
+    ? addKey(scripts, script.package, script.global)
+    : scripts;
 }
-
 
 /**
  * Make sure the given script is
@@ -60,9 +54,8 @@ function setExternal(scripts, script) {
  * @returns {*|string|string|string|string|Array}
  */
 function hasValidConfig(script) {
-	return script.package && (script.local || script.global);
+  return script.package && (script.local || script.global);
 }
-
 
 /**
  * Explode script configs with an
@@ -75,19 +68,18 @@ function hasValidConfig(script) {
  * @returns {Array.<T>|string|*|{dist}}
  */
 function extractNestedConfig(scripts, script) {
-	return scripts.concat(
-		Array.isArray(script.local)
-			? script.local.reduce(function (extracted, local) {
-					return extracted.concat({
-						local: local,
-						global: script.global,
-						package: script.package
-					});
-				}, [])
-			: script
-	);
+  return scripts.concat(
+    Array.isArray(script.local)
+      ? script.local.reduce(function (extracted, local) {
+          return extracted.concat({
+            local: local,
+            global: script.global,
+            package: script.package,
+          });
+        }, [])
+      : script,
+  );
 }
-
 
 /**
  * Return a decorator for the scripts
@@ -115,31 +107,34 @@ function extractNestedConfig(scripts, script) {
  * @returns {Function}
  */
 module.exports = function provideScripts(scripts) {
-	scripts = scripts || [];
+  scripts = scripts || [];
 
-	var validScripts = scripts
-		.filter(hasValidConfig)
-		.reduce(extractNestedConfig, []);
+  var validScripts = scripts
+    .filter(hasValidConfig)
+    .reduce(extractNestedConfig, []);
 
-	return function provideTo(config) {
-		config = config || {};
+  return function provideTo(config) {
+    config = config || {};
 
-		var externals = validScripts.reduce(setExternal, {});
-		var providers = validScripts.reduce(setProvider, {});
+    var externals = validScripts.reduce(setExternal, {});
+    var providers = validScripts.reduce(setProvider, {});
 
-		return validScripts.length
-			? deepMerge({
-					options: {
-						webpack: {
-							defaults: {
-								externals: externals,
-								plugins: providers
-									? [new webpack.ProvidePlugin(providers)]
-									: []
-							}
-						}
-					}
-				}, config)
-			: config;
-	};
+    return validScripts.length
+      ? deepMerge(
+          {
+            options: {
+              webpack: {
+                defaults: {
+                  externals: externals,
+                  plugins: providers
+                    ? [new webpack.ProvidePlugin(providers)]
+                    : [],
+                },
+              },
+            },
+          },
+          config,
+        )
+      : config;
+  };
 };

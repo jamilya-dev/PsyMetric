@@ -1,8 +1,8 @@
 // utils
-var deepMerge = require('../utils/deepMerge');
+var deepMerge = require("../utils/deepMerge");
 
 // config
-var assets = require('./common').paths.assets;
+var assets = require("./common").paths.assets;
 
 /**
  * Style Building
@@ -14,27 +14,27 @@ var assets = require('./common').paths.assets;
 module.exports = deepMerge({
   paths: {
     watch: [
-      assets.src + '/sass/**/*.sass',
-      '!' + assets.src + '/sass/**/*_tmp\\d+.sass',
+      assets.src + "/sass/**/*.sass",
+      "!" + assets.src + "/sass/**/*_tmp\\d+.sass",
       // assets.src + '/css/**/*.css'
     ],
     src: [
-      assets.src + '/sass/*.sass',
-      '!' + assets.src + '/sass/**/_*',
+      assets.src + "/sass/*.sass",
+      "!" + assets.src + "/sass/**/_*",
       // assets.src + '/css/**/*.css'
     ],
-    dest: assets.dest + '/css',
-    clean: assets.dest + '/css/**/*.{css,map}',
+    dest: assets.dest + "/css",
+    clean: assets.dest + "/css/**/*.{css,map}",
   },
 
   options: {
     sass: {},
     autoprefixer: {
-      overrideBrowserslist: ['last 2 version', 'ie >= 11', 'IOS >= 7'],
+      overrideBrowserslist: ["last 2 version", "ie >= 11", "IOS >= 7"],
     },
     minify: {
       preset: [
-        'default',
+        "default",
         {
           discardComments: { removeAll: true },
         },

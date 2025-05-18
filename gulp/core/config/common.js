@@ -1,5 +1,5 @@
 // utils
-var deepMerge = require('../utils/deepMerge');
+var deepMerge = require("../utils/deepMerge");
 
 /**
  * Common config
@@ -7,10 +7,10 @@ var deepMerge = require('../utils/deepMerge');
  *
  */
 module.exports = deepMerge({
-	paths: {
-		assets: {
-			src: 'assets/src',
-			dest: 'assets/dist'
-		}
-	}
+  paths: {
+    assets: {
+      src: "assets/src",
+      dest: "assets/dist",
+    },
+  },
 });

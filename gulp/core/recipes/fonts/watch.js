@@ -1,8 +1,7 @@
-var gulp   = require('gulp');
+var gulp = require("gulp");
 
 // config
-var config = require('../../config/fonts');
-
+var config = require("../../config/fonts");
 
 /**
  * Watch font files
@@ -11,8 +10,7 @@ var config = require('../../config/fonts');
  * @param done
  */
 module.exports = function (done) {
+  gulp.watch(config.paths.watch, gulp.parallel("fonts:dev"));
 
-	gulp.watch(config.paths.watch, gulp.parallel('fonts:dev'));
-
-	done();
+  done();
 };

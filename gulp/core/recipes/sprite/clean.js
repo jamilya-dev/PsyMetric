@@ -1,8 +1,7 @@
-var del = require('del');
+var del = require("del");
 
 // config
-var config = require('../../config/sprite');
-
+var config = require("../../config/sprite");
 
 /**
  * Delete all svg sprites
@@ -11,8 +10,7 @@ var config = require('../../config/sprite');
  *
  */
 module.exports = function (done) {
-	del(config.paths.clean, {force: true})
-		.then(function () {
-			done();
-		});
+  del(config.paths.clean, { force: true }).then(function () {
+    done();
+  });
 };

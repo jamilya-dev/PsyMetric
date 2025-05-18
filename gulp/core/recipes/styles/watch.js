@@ -1,8 +1,7 @@
-var gulp   = require('gulp');
+var gulp = require("gulp");
 
 // config
-var config = require('../../config/styles');
-
+var config = require("../../config/styles");
 
 /**
  * Watch style files
@@ -11,8 +10,7 @@ var config = require('../../config/styles');
  * @param done
  */
 module.exports = function (done) {
+  gulp.watch(config.paths.watch, gulp.parallel("styles:dev"));
 
-	gulp.watch(config.paths.watch, gulp.parallel('styles:dev'));
-
-	done();
+  done();
 };

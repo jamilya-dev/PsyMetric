@@ -4,22 +4,26 @@ function openMediaUploader(e, index) {
   e.preventDefault();
 
   const uploader = wp.media({
-    title: 'Выберите изображение',
+    title: "Выберите изображение",
     button: {
-      text: 'Выбрать',
+      text: "Выбрать",
     },
     multiple: false,
   });
 
-  uploader.on('select', () => {
-    const attachment = uploader.state().get('selection').first().toJSON();
+  uploader.on("select", () => {
+    const attachment = uploader.state().get("selection").first().toJSON();
 
-    const hiddenInput = document.querySelectorAll('input[name="_image[]"]')[index];
+    const hiddenInput = document.querySelectorAll('input[name="_image[]"]')[
+      index
+    ];
     if (hiddenInput) {
       hiddenInput.value = attachment.id;
     }
 
-    const imagePreview = document.querySelectorAll('#image-text-container .image-text-block img')[index];
+    const imagePreview = document.querySelectorAll(
+      "#image-text-container .image-text-block img",
+    )[index];
     if (imagePreview) {
       imagePreview.src = attachment.url;
     }
@@ -29,7 +33,7 @@ function openMediaUploader(e, index) {
 }
 
 function addNewBlock() {
-  const container = document.getElementById('image-text-container');
+  const container = document.getElementById("image-text-container");
   const newBlock = `
 		<div class="image-text-block">
 			<h4>Блок №${blockCount + 1}</h4>
@@ -43,20 +47,20 @@ function addNewBlock() {
 			<button type="button" class="delete-block-button" onclick="deleteBlock(this)">Удалить блок</button>
 		</div>
     `;
-  container.insertAdjacentHTML('beforeend', newBlock);
+  container.insertAdjacentHTML("beforeend", newBlock);
   blockCount++;
 }
 
 function deleteBlock(button) {
-  const block = button.closest('.image-text-block');
+  const block = button.closest(".image-text-block");
   block.remove();
   updateBlockNumbers();
 }
 
 function updateBlockNumbers() {
-  const blocks = document.querySelectorAll('.image-text-block');
+  const blocks = document.querySelectorAll(".image-text-block");
   blocks.forEach((block, index) => {
-    const heading = block.querySelector('h4');
+    const heading = block.querySelector("h4");
     if (heading) {
       heading.textContent = `Блок №${index + 1}`;
     }
@@ -73,7 +77,7 @@ function updateBlockNumbers() {
 
     const button = block.querySelector('button[onclick^="openMediaUploader"]');
     if (button) {
-      button.setAttribute('onclick', `openMediaUploader(event, ${index})`);
+      button.setAttribute("onclick", `openMediaUploader(event, ${index})`);
     }
   });
 

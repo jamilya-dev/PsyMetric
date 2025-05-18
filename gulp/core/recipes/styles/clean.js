@@ -1,8 +1,7 @@
-var del = require('del');
+var del = require("del");
 
 // config
-var config = require('../../config/styles');
-
+var config = require("../../config/styles");
 
 /**
  * Delete all CSS and SourceMap
@@ -11,6 +10,7 @@ var config = require('../../config/styles');
  *
  */
 module.exports = function (done) {
-	del(config.paths.clean, { force: true })
-		.then(function () { done(); });
+  del(config.paths.clean, { force: true }).then(function () {
+    done();
+  });
 };

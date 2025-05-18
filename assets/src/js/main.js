@@ -1,10 +1,12 @@
+// import slides from './modules/slides';
 import menu from './modules/menu';
 import forms from './modules/forms';
 
 const App = {
   init() {
     menu();
-    forms({ formId: 'form__contact' });
+    // slides();
+    forms({ formId: 'sendform' });
   },
 };
 document.addEventListener('DOMContentLoaded', () => {
